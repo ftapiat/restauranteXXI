@@ -16,7 +16,7 @@ return new class extends Migration
     {
         $userTable = (new User())->getTable();
 
-        Schema::create('table_clients', function (Blueprint $table) use ($userTable){
+        Schema::create('orders', function (Blueprint $table) use ($userTable){
             $table->id();
             $table->foreignId('table_id')->constrained();
             $table->foreignId('client_id')->constrained($userTable); # Es un usuario
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_clients');
+        Schema::dropIfExists('orders');
     }
 };

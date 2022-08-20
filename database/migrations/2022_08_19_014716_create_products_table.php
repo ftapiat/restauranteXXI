@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name'); # Nombre del producto
             $table->integer('stock'); # Stock actual
+            $table->unsignedInteger('price'); #precio de producto
             $table->timestamps();
         });
     }

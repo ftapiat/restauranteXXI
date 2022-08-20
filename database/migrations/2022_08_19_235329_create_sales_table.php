@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Recipe;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('table_client_dishes', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('table_client_id')->constrained();
-            $table->foreignId('dish_id')->constrained((new Recipe())->getTable()); # "Plato", se refiere a la receta
+            $table->foreignId('waiter_id')->constrained((new \App\Models\User())->getTable());
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_client_dishes');
+        Schema::dropIfExists('sales');
     }
 };
