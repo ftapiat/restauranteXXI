@@ -34,7 +34,7 @@ class UsersSeeder extends Seeder
     private function assignRoles(): void{
         $userRoles = [
             [
-                'email' => 'admin@admin.com',
+                'email' => 'admin@restaurante.com',
                 'roles' => [RolesConstants::ADMINISTRATOR]
             ]
         ];
