@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\SanctumAuthController;
+use App\Http\Controllers\Api\TableController;
+use App\Models\Other\Constants\RolesConstants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +21,11 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [SanctumAuthController::class, "login"]);
     Route::get('user', [SanctumAuthController::class, "user"])->middleware('auth:sanctum');
     Route::post('logout', [SanctumAuthController::class, "logout"])->middleware('auth:sanctum');
+});
+
+Route::group([
+    'prefix' => 'tables',
+    'middleware' => 'auth:sanctum' // TODO Reemplazar con el middleware de roles
+], static function () {
+    Route::get('/', [TableController::class, "index"]);
 });
